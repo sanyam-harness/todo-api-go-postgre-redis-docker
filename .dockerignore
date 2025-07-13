@@ -1,0 +1,5 @@
+.git
+*.pem
+*.md
+*.log
+*.DS_Store

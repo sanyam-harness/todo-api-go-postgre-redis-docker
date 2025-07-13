@@ -1,0 +1,13 @@
+todo-app
+*.exe
+*.dll
+*.so
+*.dylib
+*.test
+# build output
+/build
+# IDE / editor files
+.vscode/
+.idea/
+# Docker & compose
+**/vendor/
