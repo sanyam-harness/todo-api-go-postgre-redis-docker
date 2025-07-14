@@ -210,3 +210,67 @@ This project is licensed under the [MIT License](LICENSE).
 
 Developed by [Sanyam Jain](https://github.com/sanyam-harness)
 
+---
+
+### 🚀 Deploy on EC2 with Docker Compose
+
+> **Note:** These steps assume you already have your EC2 instance running and your key pair (`todo-key-v2.pem`) downloaded on your Mac.
+
+---
+
+#### 🔐 1. SSH into EC2
+
+```bash
+ssh -i ~/Desktop/todo-key-v2.pem ubuntu@16.16.211.38
+```
+
+---
+
+#### 📁 2. Navigate to the project folder
+
+```bash
+cd ~/todo-api-go-postgre-redis
+```
+
+---
+
+#### 🐳 3. Run Docker Compose to build and start all services
+
+```bash
+docker-compose up --build -d
+```
+
+---
+
+#### ✅ 4. Verify running containers
+
+```bash
+docker ps
+```
+
+Expected Output:
+
+```
+CONTAINER ID   IMAGE                    COMMAND                  ...     PORTS
+xxxxxxx        todo-api-container       "./wait-for-postgres…"   ...     0.0.0.0:8080->8080/tcp
+xxxxxxx        postgres:15              "docker-entrypoint.s…"   ...     0.0.0.0:5432->5432/tcp
+xxxxxxx        redis:7                  "docker-entrypoint.s…"   ...     0.0.0.0:6379->6379/tcp
+```
+
+---
+
+#### 🌐 5. Test your API (from your Mac terminal or Postman)
+
+```bash
+curl http://16.16.211.38:8080/todos
+```
+
+You should receive a JSON response like:
+
+```json
+[]
+```
+
+---
+
+
